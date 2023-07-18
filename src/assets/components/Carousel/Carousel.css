@@ -55,8 +55,7 @@
   flex-shrink: 0;
   height: 110px;
   object-fit: cover;
-}
 
-.carousel > .miniatures > img:hover {
+  /* Specials */
   cursor: pointer;
 }
