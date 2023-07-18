@@ -1,20 +1,22 @@
 .hero {
-  /* border: 1px red solid; */
+  /* Position */
+  position: relative;
 
   /* Dimensions */
-  width: 100vw;
   height: 450px;
 
-  /* Background */
-  background-image: url("../../img/hero.jpeg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  /* Attributs */
+  overflow: hidden;
+
   /* Flexbox */
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  /* align-items: flex-start; */
+}
+
+.hero > img {
+  height: 100%;
+  object-fit: cover;
 }
 
 .hero h2 {
@@ -26,11 +28,15 @@
 }
 
 .hero > div.container {
+  /* Dimensions */
   width: 100%;
-  /* border: 1px blue solid; */
 }
 
 .hero > div > div {
+  /* Position */
+  position: absolute;
+  top: 75px;
+
   /* Dimensions */
   width: 410px;
 
@@ -38,7 +44,7 @@
   background-color: white;
 
   /* Marges */
-  margin-top: 75px;
+  /* margin-top: 75px; */
   padding: 60px 30px;
 }
 
@@ -60,19 +66,20 @@
 }
 
 .tearing-effect {
-  /* border: 1px yellow solid; */
+  /* Position */
+  position: absolute;
+  bottom: 0px;
+  z-index: 2;
 
   /* Dimensions */
-  height: 100%;
+  width: 100%;
 
-  /* Background */
-  background-position: bottom right;
-  background-image: url("../../img/tear.svg");
-  background-repeat: no-repeat;
+  /* Flexbox */
+  display: flex;
+  align-items: flex-end;
 }
 
 .results-box {
-  /* border: 1px red solid; */
   /* Marges */
   margin-top: 40px;
 

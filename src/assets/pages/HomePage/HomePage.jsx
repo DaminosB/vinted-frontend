@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import "./HomePage.css";
 import axios from "axios";
 import Thumbnail from "../../components/Thumbnail/Thumbnail";
+import heroImg from "../../img/hero.jpeg";
+import tearingEffect from "../../img/tear.svg";
 
 const HomePage = () => {
   const [data, setData] = useState();
@@ -29,13 +31,17 @@ const HomePage = () => {
   ) : (
     <main className="home-page">
       <div className="hero">
+        <img src={heroImg} alt="" />
         <div className="container">
           <div>
             <h2>Prêts à faire du tri dans vos placards ?</h2>
             <button>Commencer à vendre</button>
           </div>
         </div>
-        <div className="tearing-effect"></div>
+        <div className="tearing-effect">
+          <img src={tearingEffect} alt="" />
+        </div>
+        <img src="" alt="" />
       </div>
       <div className="container">
         <div className="results-box">
