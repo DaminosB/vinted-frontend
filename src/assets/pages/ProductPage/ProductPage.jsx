@@ -13,7 +13,7 @@ const ProductPage = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://site--backend-vinted--kc7q9tc45mqv.code.run/offer/${id}`
+          `https://site--backend-vinted--kc7q9tc45mqv.code.run/offer/${id}`
         );
         // console.log(response.data);
         setData(response.data);
