@@ -40,26 +40,17 @@ const ProductPage = () => {
             <p className="price">{data.product_price}&nbsp;€</p>
             <table>
               <tbody>
-                <tr>
-                  <td>MARQUE</td>
-                  <td>{data.product_details[1].MARQUE}</td>
-                </tr>
-                <tr>
-                  <td>TAILLE</td>
-                  <td>{data.product_details[2].TAILLE}</td>
-                </tr>
-                <tr>
-                  <td>ETAT</td>
-                  <td>{data.product_details[0].ETAT}</td>
-                </tr>
-                <tr>
-                  <td>COULEUR</td>
-                  <td>{data.product_details[3].COULEUR}</td>
-                </tr>
-                <tr>
-                  <td>EMPLACEMENT</td>
-                  <td>{data.product_details[4].EMPLACEMENT}</td>
-                </tr>
+                {data.product_details.map((info, index) => {
+                  const infoTitle = Object.keys(info)[0];
+                  const infoToDisplay = info[infoTitle];
+
+                  return (
+                    <tr key={index}>
+                      <td>{infoTitle}</td>
+                      <td>{infoToDisplay}</td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
             <div className="divider"></div>
