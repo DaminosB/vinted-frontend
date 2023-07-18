@@ -1,0 +1,76 @@
+header {
+  /* Marges */
+  margin: 15px 0;
+}
+
+header > div.container {
+  /* Flex */
+  display: flex;
+  justify-content: space-between;
+}
+
+header input {
+  /* Dimensions */
+  width: 630px;
+  height: 40px;
+
+  /* Colors */
+  background-color: #f5f6f7;
+
+  /* Borders */
+  border: none;
+  border-radius: 5px;
+
+  /* Marges */
+  padding-left: 40px;
+}
+
+header input::placeholder {
+  /* Font */
+  font-size: 16px;
+  color: #bbbbbb;
+}
+
+header input:focus {
+  outline: none;
+}
+
+header img {
+  /* Dimensions */
+  height: 40px;
+}
+
+header button {
+  /* Dimensions */
+  width: 115px;
+  height: 30px;
+
+  /* Borders */
+  border: 1px #2cb1ba solid;
+  border-radius: 5px;
+
+  /* Font */
+  font-size: 12px;
+}
+
+.connexion-buttons {
+  /* Flex */
+  display: flex;
+  gap: 20px;
+}
+
+.connexion-buttons button {
+  /* Background */
+  background-color: white;
+
+  /* Font */
+  color: #2cb1ba;
+}
+
+header > div > button {
+  /* Background */
+  background-color: #2cb1ba;
+
+  /* Font */
+  color: white;
+}

@@ -1,0 +1,84 @@
+.hero {
+  /* border: 1px red solid; */
+
+  /* Dimensions */
+  width: 100vw;
+  height: 450px;
+
+  /* Background */
+  background-image: url("../../img/hero.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* Flexbox */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  /* align-items: flex-start; */
+}
+
+.hero h2 {
+  /* Font */
+  font-size: 34px;
+
+  /* Marges */
+  margin-bottom: 40px;
+}
+
+.hero > div.container {
+  width: 100%;
+  /* border: 1px blue solid; */
+}
+
+.hero > div > div {
+  /* Dimensions */
+  width: 410px;
+
+  /* Background */
+  background-color: white;
+
+  /* Marges */
+  margin-top: 75px;
+  padding: 60px 30px;
+}
+
+.hero > div > div > button {
+  /* Dimensions */
+  height: 45px;
+
+  /* Marges */
+  padding: 15px;
+
+  /* background */
+  background-color: #2caeb7;
+
+  /* Font */
+  color: white;
+
+  /* border */
+  border-radius: 5px;
+}
+
+.tearing-effect {
+  /* border: 1px yellow solid; */
+
+  /* Dimensions */
+  height: 100%;
+
+  /* Background */
+  background-position: bottom right;
+  background-image: url("../../img/tear.svg");
+  background-repeat: no-repeat;
+}
+
+.results-box {
+  /* border: 1px red solid; */
+  /* Marges */
+  margin-top: 40px;
+
+  /* Flexbox */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+}

@@ -1,0 +1,62 @@
+.carousel {
+  /* Dimensions */
+  flex: 1;
+  /* height: 100%; */
+
+  /* Flexbox */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.carousel > .picture {
+  /* Dimensions */
+  height: calc(100% - 125px);
+
+  /* Flexbox */
+  display: flex;
+  justify-content: center;
+}
+
+.carousel > .picture > img {
+  /* Dimensions */
+  height: 100%;
+  max-width: 100%;
+
+  /* Marges */
+  /* margin: 0 auto; */
+}
+
+.carousel > .miniatures {
+  /* Dimensions */
+  max-width: 100%;
+
+  /* Attributs */
+  overflow: hidden;
+
+  /* Flexbox */
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 10px;
+
+  overflow-x: scroll;
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+
+.carousel > .miniatures::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+.carousel > .miniatures > img {
+  /* Dimensions */
+  width: calc((100% - 50px) / 6);
+  flex-shrink: 0;
+  height: 110px;
+  object-fit: cover;
+}
+
+.carousel > .miniatures > img:hover {
+  cursor: pointer;
+}

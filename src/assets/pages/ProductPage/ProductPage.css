@@ -1,0 +1,101 @@
+.product-page {
+  height: calc(100vh - 72px);
+  background-color: #eaedee;
+}
+
+.content-box {
+  /* Dimensions */
+  height: 800px;
+
+  /* Flexbox */
+  display: flex;
+  justify-content: space-around;
+  gap: 50px;
+
+  /* Marges */
+  padding-top: 30px;
+}
+
+.content-box > div:not(.carousel) {
+  /* Dimensions */
+  width: 400px;
+  /* height: 100%; */
+
+  /* Background */
+  background-color: white;
+
+  /* Marges */
+  padding: 40px;
+
+  /* Flexbox */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.content-box h3 {
+  /* Font */
+  font-weight: bold;
+
+  /* Marges */
+  margin-bottom: 10px;
+}
+
+.content-box .price {
+  /* Font */
+  font-size: 24px;
+  color: #111111;
+}
+
+.content-box table {
+  /* Font */
+  font-size: 14px;
+}
+
+.content-box td:nth-child(odd) {
+  /* Font */
+  color: #999999;
+}
+
+.content-box td:nth-child(even) {
+  /* Font */
+  color: #666666;
+}
+
+.divider {
+  /* Dimensions */
+  height: 1px;
+  width: 100%;
+
+  /* Background */
+  background-color: rgba(18, 18, 18, 0.1);
+}
+
+.context-box > div {
+  /* Font */
+  font-size: 16px;
+}
+
+.content-box .owner img {
+  /* Dimensions */
+  width: 45px;
+  height: 45px;
+  object-fit: cover;
+
+  /* Borders */
+  border-radius: 50%;
+}
+
+.content-box > div > button {
+  /* Dimensions */
+  height: 35px;
+
+  /* Background */
+  background-color: #2caeb7;
+
+  /* Font */
+  color: white;
+
+  /* Borders */
+  border-radius: 5px;
+}

@@ -1,0 +1,26 @@
+body {
+  /* Fonts */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: lighter;
+}
+
+a {
+  /* Font */
+  color: black;
+  text-decoration: none;
+}
+
+.container {
+  /* Dimensions */
+  max-width: 1280px;
+
+  /* Marges */
+  margin: 0 auto;
+}
+
+.owner {
+  /* Flexbox */
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
