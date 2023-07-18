@@ -5,8 +5,8 @@ import "./ProductPage.css";
 import Carousel from "../../components/Carousel/Carousel";
 
 const ProductPage = () => {
-  const { id } = useParams();
-  const [data, setData] = useState();
+  const { id } = useParams("");
+  const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
