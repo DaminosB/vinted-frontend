@@ -11,7 +11,7 @@ const HomePage = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://site--backend-vinted--kc7q9tc45mqv.code.run/offers"
+          "https://site--backend-vinted--kc7q9tc45mqv.code.run/offers"
         );
         // console.log(response.data);
         setData(response.data);
