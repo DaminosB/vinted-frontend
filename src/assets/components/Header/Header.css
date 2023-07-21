@@ -31,10 +31,6 @@ header input::placeholder {
   color: #bbbbbb;
 }
 
-header input:focus {
-  outline: none;
-}
-
 header img {
   /* Dimensions */
   height: 40px;

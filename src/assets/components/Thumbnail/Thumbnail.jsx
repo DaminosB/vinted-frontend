@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import "./Thumbnail.css";
 
 const Thumbnail = (props) => {
-  console.log(props.product);
+  //   console.log(props.product);
   const { product_name, product_image, product_price, product_details, _id } =
     props.product;
 
@@ -15,8 +15,8 @@ const Thumbnail = (props) => {
       "https://res.cloudinary.com/dwdykfhtf/image/upload/v1684566311/vinted/default_pictures/default-avatar.jpg        ";
   }
 
-  const [etat, marque, taille, couleur, emplacemnt] = product_details;
-  console.log(marque, taille);
+  const [etat, marque, taille, couleur, emplacement] = product_details;
+  //   console.log(marque, taille);
   return (
     <div className="thumbnail">
       <Link to={`/offer/${_id}`}>

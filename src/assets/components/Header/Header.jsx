@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 import "./Header.css";
 import logo from "../../img/logo.png";
 
-const Header = () => {
+const Header = ({ setShowSignupModal, setShowSigninModal }) => {
+  const navigate = useNavigate();
   return (
     <header>
       <div className="container">
@@ -19,10 +22,35 @@ const Header = () => {
             />
           </label>
         </form>
-        <div className="connexion-buttons">
-          <button>S'inscrire</button>
-          <button>Se connecter</button>
-        </div>
+        {!Cookies.get("token") ? (
+          <div className="connexion-buttons">
+            <button
+              onClick={() => {
+                setShowSignupModal(true);
+              }}
+            >
+              S'inscrire
+            </button>
+            <button
+              onClick={() => {
+                setShowSigninModal(true);
+              }}
+            >
+              Se connecter
+            </button>
+          </div>
+        ) : (
+          <div className="connexion-buttons">
+            <button
+              onClick={() => {
+                Cookies.remove("token");
+                navigate();
+              }}
+            >
+              Se déconnecter
+            </button>
+          </div>
+        )}
         <button>Vends tes articles</button>
       </div>
     </header>

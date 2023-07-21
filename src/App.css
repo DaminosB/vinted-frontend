@@ -10,6 +10,16 @@ a {
   text-decoration: none;
 }
 
+button {
+  cursor: pointer;
+}
+
+h1 {
+  /* Font */
+  font-size: 24px;
+  text-align: center;
+}
+
 .container {
   /* Dimensions */
   max-width: 1280px;
@@ -23,4 +33,117 @@ a {
   display: flex;
   align-items: center;
   gap: 12px;
+}
+
+.red-text {
+  /* Font */
+  color: red;
+}
+
+/* ------------------------------------------------ */
+/* ------------------------------------------------ */
+/* ------------------------------------------------ */
+/* --Modales--------------------------------------- */
+/* ------------------------------------------------ */
+/* ------------------------------------------------ */
+/* ------------------------------------------------ */
+
+.modal-wrapper {
+  /* Position */
+  position: absolute;
+  top: 0px;
+
+  /* Dimensions */
+  width: 100vw;
+  height: 100vh;
+
+  /* Background */
+  background-color: rgba(0, 0, 0, 0.5);
+
+  /* Flexbox */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-wrapper > form {
+  /* Position */
+  position: relative;
+
+  /* Dimensions */
+  width: 500px;
+
+  /* Flexbox */
+  display: flex;
+  flex-direction: column;
+
+  /* Marges */
+  padding: 50px;
+
+  /* Borders */
+  border-radius: 5px;
+
+  /* Background */
+  background-color: white;
+}
+
+.modal-wrapper > form > .close-button {
+  /* Position */
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  /* Background */
+  background-color: white;
+}
+
+.modal-wrapper > form input:not(input[type="checkbox"]) {
+  /* Dimensions */
+  width: 275px;
+  height: 35px;
+
+  /* Borders */
+  border: none;
+  border-bottom: 1px #2cb1ba solid;
+}
+
+.modal-wrapper > form input {
+  /* Marges */
+  margin-top: 25px;
+}
+
+.modal-wrapper > form input::placeholder {
+  /* Font */
+  font-size: 16px;
+}
+
+.modal-wrapper > form p {
+  /* Font */
+  font-size: 12px;
+
+  /* Marges */
+  margin-top: 5px;
+}
+
+.modal-wrapper > form > button[type="submit"] {
+  /* Font */
+  color: white;
+
+  /* Background */
+  background-color: #2cb1ba;
+
+  /* Marges */
+  margin-top: 50px;
+  padding: 15px;
+
+  /* Borders */
+  border-radius: 5px;
+}
+
+.modal-wrapper p.legal-notice {
+  /* Font */
+  color: #999;
+
+  /* Marges */
+  margin-top: 30px;
 }
