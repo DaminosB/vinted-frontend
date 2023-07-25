@@ -27,6 +27,7 @@ const Signin = ({ showSigninModal, setShowSigninModal }) => {
       setErrorMessage("Email ou mot de passe invalide");
     }
   };
+
   if (showSigninModal) {
     return (
       <div

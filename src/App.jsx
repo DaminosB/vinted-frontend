@@ -10,14 +10,42 @@ import Signin from "./assets/components/Signin/Signin";
 function App() {
   const [showSignupModal, setShowSignupModal] = useState(false);
   const [showSigninModal, setShowSigninModal] = useState(false);
+
+  const [searchBar, setSearchBar] = useState("");
+  const [priceFilter, setPriceFilter] = useState(true);
+  const [searchPriceMin, setSearchPriceMin] = useState(0);
+  const [searchPriceMax, setSearchPriceMax] = useState(100);
+
   return (
     <Router>
       <Header
         setShowSignupModal={setShowSignupModal}
         setShowSigninModal={setShowSigninModal}
+        searchBar={searchBar}
+        setSearchBar={setSearchBar}
+        priceFilter={priceFilter}
+        setPriceFilter={setPriceFilter}
+        searchPriceMin={searchPriceMin}
+        setSearchPriceMin={setSearchPriceMin}
+        searchPriceMax={searchPriceMax}
+        setSearchPriceMax={setSearchPriceMax}
       />
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route
+          path="/"
+          element={
+            <HomePage
+              searchBar={searchBar}
+              setSearchBar={setSearchBar}
+              priceFilter={priceFilter}
+              setPriceFilter={setPriceFilter}
+              searchPriceMin={searchPriceMin}
+              setSearchPriceMin={setSearchPriceMin}
+              searchPriceMax={searchPriceMax}
+              setSearchPriceMax={setSearchPriceMax}
+            />
+          }
+        />
         <Route path="/offer/:id" element={<ProductPage />} />
       </Routes>
       <Signup

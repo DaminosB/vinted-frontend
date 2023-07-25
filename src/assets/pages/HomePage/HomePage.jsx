@@ -5,15 +5,40 @@ import Thumbnail from "../../components/Thumbnail/Thumbnail";
 import heroImg from "../../img/hero.jpeg";
 import tearingEffect from "../../img/tear.svg";
 
-const HomePage = () => {
+const HomePage = ({
+  searchBar,
+  setSearchBar,
+  priceFilter,
+  setPriceFilter,
+  searchPriceMin,
+  setSearchPriceMin,
+  searchPriceMax,
+  setSearchPriceMax,
+}) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
+
+  // let querySearchBar = "";
+  // let queryPriceMin = "";
+  // let queryPriceMax = "";
+
+  // if (searchBar) {
+  //   querySearchBar = `title=${searchBar}`;
+  // }
+
+  // if (searchPriceMin) {
+  //   queryPriceMin = `priceMin=${searchPriceMin}`;
+  // }
+
+  // if (searchPriceMax) {
+  //   queryPriceMax = `priceMax=${searchPriceMax}`;
+  // }
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://site--backend-vinted--kc7q9tc45mqv.code.run/offers"
+          `https://site--backend-vinted--kc7q9tc45mqv.code.run/offers?title=${searchBar}&priceMin=${searchPriceMin}&priceMax=${searchPriceMax}`
         );
         // console.log(response.data);
         setData(response.data);
@@ -23,9 +48,9 @@ const HomePage = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [searchBar, searchPriceMax, searchPriceMin]);
 
-  //   console.log(data);
+  // console.log(data);
   return isLoading ? (
     <span>En cours de chargement...</span>
   ) : (
@@ -45,9 +70,21 @@ const HomePage = () => {
       </div>
       <div className="container">
         <div className="results-box">
-          {data.offers.map((product, index) => {
-            return <Thumbnail key={product._id} product={product} />;
-          })}
+          {priceFilter
+            ? data.offers
+                .sort((a, b) => {
+                  return a.product_price - b.product_price;
+                })
+                .map((product, index) => {
+                  return <Thumbnail key={product._id} product={product} />;
+                })
+            : data.offers
+                .sort((a, b) => {
+                  return a.product_name.localeCompare(b.product_name);
+                })
+                .map((product, index) => {
+                  return <Thumbnail key={product._id} product={product} />;
+                })}
         </div>
       </div>
     </main>

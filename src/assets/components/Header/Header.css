@@ -9,7 +9,7 @@ header > div.container {
   justify-content: space-between;
 }
 
-header input {
+header input[type="search"] {
   /* Dimensions */
   width: 630px;
   height: 40px;
@@ -69,4 +69,22 @@ header > div > button {
 
   /* Font */
   color: white;
+}
+
+header .filters {
+  /* Dimensions */
+  width: 100%;
+
+  /* Flexbox */
+  display: flex;
+}
+
+header .filters input.active {
+  /* Background */
+  background-color: #2cb1ba;
+}
+
+header .filters input.inactive {
+  /* Background */
+  background-color: white;
 }

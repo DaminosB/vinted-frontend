@@ -27,6 +27,10 @@ const Signup = ({ showSignupModal, setShowSignupModal }) => {
         );
         //   console.log(response.data.token);
         Cookies.set("token", response.data.token);
+        setUsername("");
+        setEmail("");
+        setPassword("");
+        setNewsletter(false);
         setShowSignupModal(false);
       } catch (error) {
         console.log(error.response);
@@ -34,6 +38,7 @@ const Signup = ({ showSignupModal, setShowSignupModal }) => {
     }
   };
 
+  // console.log(newsletter);
   if (showSignupModal) {
     return (
       <div
@@ -109,7 +114,7 @@ const Signup = ({ showSignupModal, setShowSignupModal }) => {
               type="checkbox"
               name="newsletter"
               id="newsletter"
-              value={newsletter}
+              checked={newsletter}
               onChange={(event) => {
                 const checked = event.target.checked;
                 setNewsletter(checked);
