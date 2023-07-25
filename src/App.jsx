@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Cookies from "js-cookie";
 import "./App.css";
 import Header from "./assets/components/Header/Header";
 import HomePage from "./assets/pages/HomePage/HomePage";
@@ -11,10 +12,16 @@ function App() {
   const [showSignupModal, setShowSignupModal] = useState(false);
   const [showSigninModal, setShowSigninModal] = useState(false);
 
+  const [token, setToken] = useState(Cookies.get("token"));
+
   const [searchBar, setSearchBar] = useState("");
   const [priceFilter, setPriceFilter] = useState(true);
   const [searchPriceMin, setSearchPriceMin] = useState(0);
   const [searchPriceMax, setSearchPriceMax] = useState(100);
+
+  useEffect(() => {
+    token && Cookies.set("token", token);
+  }, [token]);
 
   return (
     <Router>
@@ -29,6 +36,8 @@ function App() {
         setSearchPriceMin={setSearchPriceMin}
         searchPriceMax={searchPriceMax}
         setSearchPriceMax={setSearchPriceMax}
+        token={token}
+        setToken={setToken}
       />
       <Routes>
         <Route
@@ -51,10 +60,14 @@ function App() {
       <Signup
         showSignupModal={showSignupModal}
         setShowSignupModal={setShowSignupModal}
+        token={token}
+        setToken={setToken}
       />
       <Signin
         showSigninModal={showSigninModal}
         setShowSigninModal={setShowSigninModal}
+        token={token}
+        setToken={setToken}
       />
     </Router>
   );

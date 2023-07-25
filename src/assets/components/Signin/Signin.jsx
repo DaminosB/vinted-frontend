@@ -1,9 +1,8 @@
 import { useState } from "react";
-import Cookies from "js-cookie";
 import "./Signin.css";
 import axios from "axios";
 
-const Signin = ({ showSigninModal, setShowSigninModal }) => {
+const Signin = ({ showSigninModal, setShowSigninModal, token, setToken }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -20,7 +19,7 @@ const Signin = ({ showSigninModal, setShowSigninModal }) => {
         "https://site--backend-vinted--kc7q9tc45mqv.code.run/user/login",
         { email, password }
       );
-      Cookies.set("token", response.data.token);
+      setToken(response.data.token);
       setShowSigninModal(false);
     } catch (error) {
       console.log(error.response);

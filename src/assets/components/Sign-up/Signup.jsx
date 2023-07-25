@@ -1,9 +1,8 @@
 import { useState } from "react";
-import Cookies from "js-cookie";
 import "./Signup.css";
 import axios from "axios";
 
-const Signup = ({ showSignupModal, setShowSignupModal }) => {
+const Signup = ({ showSignupModal, setShowSignupModal, token, setToken }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -26,7 +25,7 @@ const Signup = ({ showSignupModal, setShowSignupModal }) => {
           { username, email, password, newsletter }
         );
         //   console.log(response.data.token);
-        Cookies.set("token", response.data.token);
+        setToken(response.data.token);
         setUsername("");
         setEmail("");
         setPassword("");

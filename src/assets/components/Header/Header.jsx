@@ -15,6 +15,8 @@ const Header = ({
   setSearchPriceMin,
   searchPriceMax,
   setSearchPriceMax,
+  token,
+  setToken,
 }) => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -80,7 +82,7 @@ const Header = ({
             </div>
           )}
         </form>
-        {!Cookies.get("token") ? (
+        {!token ? (
           <div className="connexion-buttons">
             <button
               onClick={() => {
@@ -101,6 +103,7 @@ const Header = ({
           <div className="connexion-buttons">
             <button
               onClick={() => {
+                setToken("");
                 Cookies.remove("token");
                 navigate();
               }}
