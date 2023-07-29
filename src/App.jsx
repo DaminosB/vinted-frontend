@@ -2,11 +2,12 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import "./App.css";
-import Header from "./assets/components/Header/Header";
-import HomePage from "./assets/pages/HomePage/HomePage";
-import ProductPage from "./assets/pages/ProductPage/ProductPage";
-import Signup from "./assets/components/Sign-up/Signup";
-import Signin from "./assets/components/Signin/Signin";
+import Header from "./components/Header/Header";
+import HomePage from "./pages/HomePage/HomePage";
+import ProductPage from "./pages/ProductPage/ProductPage";
+import Signup from "./components/Sign-up/Signup";
+import Signin from "./components/Signin/Signin";
+import PublishPage from "./pages/PublishPage/PublishPage";
 
 function App() {
   const [showSignupModal, setShowSignupModal] = useState(false);
@@ -56,6 +57,15 @@ function App() {
           }
         />
         <Route path="/offer/:id" element={<ProductPage />} />
+        <Route
+          path="/offer/publish"
+          element={
+            <PublishPage
+              token={token}
+              setShowSigninModal={setShowSigninModal}
+            />
+          }
+        />
       </Routes>
       <Signup
         showSignupModal={showSignupModal}

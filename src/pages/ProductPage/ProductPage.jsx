@@ -32,7 +32,7 @@ const ProductPage = () => {
   return isLoading ? (
     <span>En cours de chargement...</span>
   ) : (
-    <main className="product-page">
+    <main>
       <div className="container">
         <div className="content-box">
           <Carousel images={data.product_image} />

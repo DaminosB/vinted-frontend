@@ -2,6 +2,9 @@ body {
   /* Fonts */
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: lighter;
+
+  /* Background */
+  background-color: #eaedee;
 }
 
 a {
@@ -17,7 +20,9 @@ button {
 h1 {
   /* Font */
   font-size: 24px;
-  text-align: center;
+
+  /* Marges */
+  margin: 25px 0;
 }
 
 .container {
@@ -28,16 +33,17 @@ h1 {
   margin: 0 auto;
 }
 
+.error-message {
+  /* Font */
+  color: red;
+  font-size: 12px;
+}
+
 .owner {
   /* Flexbox */
   display: flex;
   align-items: center;
   gap: 12px;
-}
-
-.red-text {
-  /* Font */
-  color: red;
 }
 
 /* ------------------------------------------------ */
@@ -95,6 +101,10 @@ h1 {
 
   /* Background */
   background-color: white;
+}
+
+.modal-wrapper > form > h1 {
+  text-align: center;
 }
 
 .modal-wrapper > form input:not(input[type="checkbox"]) {

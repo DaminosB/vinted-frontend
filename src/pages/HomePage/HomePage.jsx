@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./HomePage.css";
 import axios from "axios";
 import Thumbnail from "../../components/Thumbnail/Thumbnail";
-import heroImg from "../../img/hero.jpeg";
-import tearingEffect from "../../img/tear.svg";
+import heroImg from "../../assets/img/hero.jpeg";
+import tearingEffect from "../../assets/img/tear.svg";
 
 const HomePage = ({
   searchBar,
@@ -60,7 +61,9 @@ const HomePage = ({
         <div className="container">
           <div>
             <h2>Prêts à faire du tri dans vos placards ?</h2>
-            <button>Commencer à vendre</button>
+            <Link to="/offer/publish">
+              <button>Commencer à vendre</button>
+            </Link>
           </div>
         </div>
         <div className="tearing-effect">

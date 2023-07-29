@@ -1,0 +1,125 @@
+.uploaded-images {
+  /* Borders */
+  border: 1px #43b1ba dashed;
+
+  /* Flexbox */
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+
+  /* Marges */
+  padding: 15px;
+}
+
+.uploaded-images input[type="file"] {
+  /* Apparence */
+  display: none;
+}
+
+.upload-thumbnail {
+  /* Position */
+  position: relative;
+
+  /* Dimensions */
+  width: 100px;
+  height: 125px;
+}
+
+.upload-thumbnail img {
+  /* Dimensiosn */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.upload-thumbnail button {
+  /* Position */
+  position: absolute;
+  top: -7px;
+  right: -7px;
+
+  /* Dimensions */
+  width: 15px;
+  height: 15px;
+
+  /* Borders */
+  border-radius: 50%;
+
+  /* Background */
+  background-color: red;
+
+  /* Font */
+  font-size: 10px;
+  color: white;
+  line-height: 15px;
+}
+
+div.inline-button,
+div.overlap-button {
+  /* Dimensions */
+  height: 125px;
+
+  /* Flexbox */
+  display: flex;
+
+  /* Miscellaneous */
+  cursor: pointer;
+}
+
+div.inline-button {
+  /* Dimensions */
+  width: 100px;
+
+  /* Flexbox */
+  justify-content: center;
+  align-items: center;
+
+  /* Font */
+  color: #43b1ba;
+
+  /* Background */
+  background-color: #43b0ba2e;
+}
+
+div.inline-button div {
+  /* Dimensions */
+  width: 75px;
+  height: 75px;
+
+  /* Font */
+  font-size: 72px;
+  text-align: center;
+  color: #43b1ba;
+  font-family: "Courier New", Courier, monospace;
+
+  /* Borders */
+  border-radius: 50%;
+
+  /* Background */
+  background-color: white;
+}
+
+.uploaded-images div.overlap-button {
+  /* Dimensions */
+  width: 100%;
+
+  /* Flexbox */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.uploaded-images div.overlap-button div {
+  /* Background */
+  background-color: white;
+
+  /* Borders */
+  border: 1px #43b1ba solid;
+
+  /* Marges */
+  padding: 15px;
+  margin: 0 auto;
+
+  /* Font */
+  color: #43b1ba;
+}

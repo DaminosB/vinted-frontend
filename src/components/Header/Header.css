@@ -1,6 +1,9 @@
 header {
   /* Marges */
-  margin: 15px 0;
+  padding: 15px 0;
+
+  /* Background */
+  background-color: white;
 }
 
 header > div.container {
@@ -63,7 +66,7 @@ header button {
   color: #2cb1ba;
 }
 
-header > div > button {
+header > div button {
   /* Background */
   background-color: #2cb1ba;
 

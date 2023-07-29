@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useNavigate, useLocation } from "react-router-dom";
 import Cookies from "js-cookie";
 import "./Header.css";
-import logo from "../../img/logo.png";
+import logo from "../../assets/img/logo.png";
 
 const Header = ({
   setShowSignupModal,
@@ -39,7 +39,7 @@ const Header = ({
               }}
             />
           </label>
-          {location.pathname === "/" && (
+          {/* {location.pathname === "/" && (
             <div className="filters">
               <label htmlFor="price-filter">
                 <span>Trier par prix&nbsp;:</span>
@@ -80,7 +80,7 @@ const Header = ({
                 />
               </label>
             </div>
-          )}
+          )} */}
         </form>
         {!token ? (
           <div className="connexion-buttons">
@@ -112,7 +112,9 @@ const Header = ({
             </button>
           </div>
         )}
-        <button>Vends tes articles</button>
+        <Link to="/offer/publish">
+          <button>Vends tes articles</button>
+        </Link>
       </div>
     </header>
   );
