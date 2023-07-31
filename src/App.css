@@ -25,6 +25,10 @@ h1 {
   margin: 25px 0;
 }
 
+.clickable {
+  cursor: pointer;
+}
+
 .container {
   /* Dimensions */
   max-width: 1280px;
@@ -172,4 +176,39 @@ h1 {
 
   /* Marges */
   margin-top: 30px;
+}
+
+/* ------------------------------------------------ */
+/* ------------------------------------------------ */
+/* ------------------------------------------------ */
+/* --Tables---------------------------------------- */
+/* ------------------------------------------------ */
+/* ------------------------------------------------ */
+/* ------------------------------------------------ */
+
+table {
+  width: 100%;
+  margin: 0 auto;
+}
+
+table tr:first-of-type {
+  /* Font */
+  font-weight: bold;
+}
+
+table tr:nth-child(even) {
+  background-color: #ffffff79;
+}
+
+table td {
+  /* Marges */
+  margin-right: 150px;
+  padding: 15px;
+  vertical-align: middle;
+}
+table img {
+  /* Dimensions */
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
 }

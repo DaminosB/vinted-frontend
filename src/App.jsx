@@ -10,6 +10,7 @@ import Signup from "./components/Sign-up/Signup";
 import Signin from "./components/Signin/Signin";
 import PublishPage from "./pages/PublishPage/PublishPage";
 import PaymentPage from "./pages/PaymentPage/PaymentPage";
+import OrdersPage from "./pages/ActivityPage/ActivityPage";
 
 function App() {
   const [showSignupModal, setShowSignupModal] = useState(false);
@@ -99,11 +100,18 @@ function App() {
             <PaymentPage
               token={token}
               fetchData={fetchData}
+              setShowSigninModal={setShowSigninModal}
               isLoading={isLoading}
               data={data}
             />
           }
-        ></Route>
+        />
+        <Route
+          path="/user/orders"
+          element={
+            <OrdersPage token={token} setShowSigninModal={setShowSigninModal} />
+          }
+        />
       </Routes>
       <Signup
         showSignupModal={showSignupModal}

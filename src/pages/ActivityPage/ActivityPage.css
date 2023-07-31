@@ -1,0 +1,12 @@
+h1 > span {
+  /* Marges */
+  margin-right: 100px;
+
+  /* Miscellaneous */
+  cursor: pointer;
+}
+
+h1 > span.inactive {
+  /* Font */
+  color: #999999;
+}

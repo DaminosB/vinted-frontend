@@ -5,8 +5,6 @@ import axios from "axios";
 import ImagesToUploadBox from "../../components/ImagesToUploadBox/ImagesToUploadBox";
 
 const PublishPage = ({ token, setShowSigninModal }) => {
-  const [showPublishPage, setShowPublishPage] = useState(true);
-
   const [pictures, setPictures] = useState([]);
   const [previewPictures, setPreviewPictures] = useState([]);
   const [title, setTitle] = useState("");
@@ -26,10 +24,7 @@ const PublishPage = ({ token, setShowSigninModal }) => {
 
   useEffect(() => {
     if (!token) {
-      setShowPublishPage(false);
       setShowSigninModal(true);
-    } else {
-      setShowPublishPage(true);
     }
   }, [token, setShowSigninModal]);
 
@@ -84,7 +79,7 @@ const PublishPage = ({ token, setShowSigninModal }) => {
   };
 
   return (
-    showPublishPage && (
+    token && (
       <main>
         <div className="container">
           <h1>Vends ton article</h1>

@@ -110,6 +110,13 @@ const Header = ({
             >
               Se déconnecter
             </button>
+            <button
+              onClick={() => {
+                navigate("/user/orders/");
+              }}
+            >
+              Mon activité
+            </button>
           </div>
         )}
         <Link to="/offer/publish">
