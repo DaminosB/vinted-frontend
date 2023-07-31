@@ -1,12 +1,14 @@
 import { useState } from "react";
 import "./Carousel.css";
+import { useEffect } from "react";
 
 const Carousel = ({ images }) => {
-  const [pictureToDisplay, setPictureToDisplay] = useState(
-    images[0].secure_url
-  );
+  const [pictureToDisplay, setPictureToDisplay] = useState("");
 
-  //   console.log(images);
+  useEffect(() => {
+    setPictureToDisplay(images[0].secure_url);
+  }, []);
+
   return (
     <div className="carousel">
       <div className="picture">

@@ -1,0 +1,93 @@
+table {
+  width: 100%;
+  margin: 0 auto;
+}
+
+table tr:first-of-type {
+  /* Font */
+  font-weight: bold;
+}
+
+table tr:nth-child(even) {
+  background-color: #ffffff79;
+}
+
+table td {
+  /* Marges */
+  margin-right: 150px;
+  padding: 15px;
+  vertical-align: middle;
+}
+table img {
+  /* Dimensions */
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.order-recap {
+  /* Flexbox */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  /* Marges */
+  margin-bottom: 75px;
+}
+
+.order-recap > div {
+  /* Dimensions */
+  width: 50%;
+
+  /* Flexbox */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.order-recap > div > div {
+  /* Dimensions */
+  width: 100%;
+
+  /* Marges */
+  padding: 10px 25px;
+  /* Flexbox */
+  display: flex;
+  justify-content: space-between;
+}
+
+.payment-section {
+  /* Dimensions */
+  width: 50%;
+
+  /* Marges */
+  margin: 0 auto;
+  padding: 25px;
+
+  /* Background */
+  background-color: white;
+}
+
+.payment-section p {
+  padding-bottom: 50px;
+  margin-bottom: 50px;
+  border-bottom: 1px #999999 solid;
+}
+
+.payment-section button {
+  /* Dimensions */
+  width: 100%;
+
+  /* Marges */
+  margin: 30px 0;
+  padding: 15px;
+
+  /* Background */
+  background-color: #00c06d;
+
+  /* Borders */
+  border-radius: 5px;
+
+  /* Font */
+  color: white;
+}

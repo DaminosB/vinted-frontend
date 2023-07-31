@@ -2,7 +2,13 @@ import { useState } from "react";
 import "./Signup.css";
 import axios from "axios";
 
-const Signup = ({ showSignupModal, setShowSignupModal, token, setToken }) => {
+const Signup = ({
+  showSignupModal,
+  setShowSignupModal,
+  token,
+  setToken,
+  setShowSigninModal,
+}) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -76,7 +82,7 @@ const Signup = ({ showSignupModal, setShowSignupModal, token, setToken }) => {
             />
           </label>
           {errorMessage && !username && (
-            <p className="red-text">{errorMessage}</p>
+            <p className="error-message">{errorMessage}</p>
           )}
           <label htmlFor="mail">
             <input
@@ -91,7 +97,9 @@ const Signup = ({ showSignupModal, setShowSignupModal, token, setToken }) => {
               }}
             />
           </label>
-          {errorMessage && !email && <p className="red-text">{errorMessage}</p>}
+          {errorMessage && !email && (
+            <p className="error-message">{errorMessage}</p>
+          )}
           <label htmlFor="password">
             <input
               type="password"
@@ -106,7 +114,7 @@ const Signup = ({ showSignupModal, setShowSignupModal, token, setToken }) => {
             />
           </label>
           {errorMessage && !password && (
-            <p className="red-text">{errorMessage}</p>
+            <p className="error-message">{errorMessage}</p>
           )}
           <label htmlFor="newsletter">
             <input
@@ -125,6 +133,15 @@ const Signup = ({ showSignupModal, setShowSignupModal, token, setToken }) => {
             En m'inscrivant je confirme avoir lu et accepté les Termes &
             Conditions et Politique de Confidentialité de Vinted. Je confirme
             avoir au moins 18 ans.
+          </p>
+          <p
+            className="text-action"
+            onClick={() => {
+              setShowSignupModal(false);
+              setShowSigninModal(true);
+            }}
+          >
+            Vous avez déjà un compte&nbsp;? Rdv sur la page connexion.
           </p>
           <button
             type="submit"

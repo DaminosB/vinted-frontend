@@ -81,7 +81,7 @@
   border-radius: 50%;
 }
 
-.content-box > div > button {
+.content-box > div button {
   /* Dimensions */
   height: 35px;
 

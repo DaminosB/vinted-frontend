@@ -16,6 +16,9 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+
+  /* Marges */
+  margin-bottom: 40px;
 }
 
 .hero > img {
@@ -92,4 +95,29 @@
   flex-direction: row;
   flex-wrap: wrap;
   gap: 10px;
+}
+
+.pages-array {
+  /* Flexbox */
+  display: flex;
+  gap: 15px;
+  justify-content: flex-end;
+
+  /* Font */
+  color: #999999;
+}
+
+.pages-array nav:not(.active-page) {
+  /* Miscellaneous */
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.pages-array nav:not(.active-page):hover {
+  text-decoration: none;
+}
+
+.pages-array nav.active-page {
+  /* Font */
+  font-weight: bold;
 }

@@ -2,7 +2,13 @@ import { useState } from "react";
 import "./Signin.css";
 import axios from "axios";
 
-const Signin = ({ showSigninModal, setShowSigninModal, token, setToken }) => {
+const Signin = ({
+  showSigninModal,
+  setShowSigninModal,
+  token,
+  setToken,
+  setShowSignupModal,
+}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -77,7 +83,16 @@ const Signin = ({ showSigninModal, setShowSigninModal, token, setToken }) => {
               }}
             />
           </label>
-          {errorMessage && <p className="red-text">{errorMessage}</p>}
+          {errorMessage && <p className="error-message">{errorMessage}</p>}
+          <p
+            className="text-action"
+            onClick={() => {
+              setShowSignupModal(true);
+              setShowSigninModal(false);
+            }}
+          >
+            Vous n'avez pas encore de compte&nbsp;? Rdv sur la page inscription.
+          </p>
           <button
             type="submit"
             onClick={(event) => {

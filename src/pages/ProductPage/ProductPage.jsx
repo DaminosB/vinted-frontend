@@ -1,13 +1,16 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import axios from "axios";
+import { useParams, useNavigate } from "react-router-dom";
 import "./ProductPage.css";
 import Carousel from "../../components/Carousel/Carousel";
+import axios from "axios";
 
 const ProductPage = () => {
-  const { id } = useParams("");
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+
+  const { id } = useParams("");
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,6 +31,8 @@ const ProductPage = () => {
   //   console.log(data);
 
   //   const { product_image } = data;
+
+  console.log(data);
 
   return isLoading ? (
     <span>En cours de chargement...</span>
@@ -62,7 +67,13 @@ const ProductPage = () => {
               <img src={data.owner.account.avatar.secure_url} alt="" />
               <p>{data.owner.account.username}</p>
             </div>
-            <button>Acheter</button>
+            <button
+              onClick={() => {
+                navigate(`/payment/${id}`);
+              }}
+            >
+              Acheter
+            </button>
           </div>
         </div>
       </div>
