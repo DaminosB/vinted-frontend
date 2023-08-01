@@ -24,8 +24,7 @@ const CheckoutForm = ({ token, title, seller, price, offerID }) => {
     const stripeToken = stripeResponse.token.id;
     try {
       const response = await axios.post(
-        // "https://site--backend-vinted--kc7q9tc45mqv.code.run/payment",
-        "http://localhost:3000/payment",
+        "https://site--backend-vinted--kc7q9tc45mqv.code.run/payment",
         {
           stripeToken,
           offerID,
@@ -56,7 +55,7 @@ const CheckoutForm = ({ token, title, seller, price, offerID }) => {
       ) : (
         <form onSubmit={handleSubmit}>
           <CardElement />
-          <button>Pay</button>
+          <button type="submit">Pay</button>
         </form>
       )}
     </div>

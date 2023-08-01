@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import "./ImagesToUploadBox.css";
 
+import closeButton from "../../assets/img/xmark-solid.svg";
+
 const ImagesToUploadBox = ({
   previewPictures,
   setPreviewPictures,
@@ -30,9 +32,6 @@ const ImagesToUploadBox = ({
     const imagesToDisplay = [...previewPictures];
     imagesToDisplay.splice(index, 1);
 
-    // console.log("imagesToDisplay", imagesToDisplay);
-    // console.log("imagesToUpload", imagesToUpload);
-
     setPictures(imagesToUpload);
     setPreviewPictures(imagesToDisplay);
   };
@@ -61,7 +60,7 @@ const ImagesToUploadBox = ({
                   handleRemovePicture(index);
                 }}
               >
-                x
+                <img src={closeButton} alt="" />
               </button>
             </div>
           );

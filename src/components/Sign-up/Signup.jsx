@@ -54,7 +54,7 @@ const Signup = ({
         formData.append("avatar", avatar);
         formData.append("newsletter", newsletter);
         const response = await axios.post(
-          "http://localhost:3000/user/signup",
+          "https://site--backend-vinted--kc7q9tc45mqv.code.run/user/signup",
           formData,
           {
             headers: {

@@ -14,7 +14,7 @@ const Offers = ({ token }) => {
     try {
       const fetchData = async () => {
         const response = await axios.get(
-          `http://localhost:3000/user/offers?token=${token}`
+          `https://site--backend-vinted--kc7q9tc45mqv.code.run/user/offers?token=${token}`
         );
         setOffers(response.data);
         setIsLoading(false);

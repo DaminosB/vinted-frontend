@@ -30,8 +30,8 @@
 .upload-thumbnail button {
   /* Position */
   position: absolute;
-  top: -7px;
-  right: -7px;
+  top: 0px;
+  right: 0px;
 
   /* Dimensions */
   width: 15px;
@@ -41,7 +41,7 @@
   border-radius: 50%;
 
   /* Background */
-  background-color: red;
+  background-color: white;
 
   /* Font */
   font-size: 10px;

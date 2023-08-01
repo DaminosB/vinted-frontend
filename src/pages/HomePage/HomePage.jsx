@@ -26,8 +26,7 @@ const HomePage = ({
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          // `https://site--backend-vinted--kc7q9tc45mqv.code.run/offers?title=${searchBar}&priceMin=${searchPriceMin}&priceMax=${searchPriceMax}&page=${pageToDisplay}`
-          `http://localhost:3000/offers?title=${searchBar}&priceMin=${searchPriceMin}&priceMax=${searchPriceMax}&page=${pageToDisplay}`
+          `https://site--backend-vinted--kc7q9tc45mqv.code.run/offers?title=${searchBar}&priceMin=${searchPriceMin}&priceMax=${searchPriceMax}&page=${pageToDisplay}`
         );
         // console.log(response.data);
         setData(response.data);
