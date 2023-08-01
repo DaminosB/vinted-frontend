@@ -5,9 +5,11 @@ import Carousel from "../../components/Carousel/Carousel";
 import axios from "axios";
 import Loading from "../../components/Loading/Loading";
 
-const ProductPage = ({ setShowLoading }) => {
+const ProductPage = ({ setShowLoading, token }) => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [disableButton, setDisableButton] = useState(false);
+  const [buttonText, setButtonText] = useState("Acheter");
 
   const { id } = useParams("");
 
@@ -18,12 +20,20 @@ const ProductPage = ({ setShowLoading }) => {
       try {
         setShowLoading(true);
         const response = await axios.get(
-          `https://site--backend-vinted--kc7q9tc45mqv.code.run/offer/${id}`
+          // `https://site--backend-vinted--kc7q9tc45mqv.code.run/offer/${id}`
+          `http://localhost:3000/offer/${id}`
         );
         // console.log(response.data);
         setData(response.data);
         setIsLoading(false);
         setShowLoading(false);
+        if (response.data.buyer) {
+          setDisableButton(true);
+          setButtonText("Cet article n'est plus à vendre");
+        } else if (response.data.owner.token === token) {
+          setDisableButton(true);
+          setButtonText("Cet article vous appartient déjà");
+        }
       } catch (error) {
         console.log(error.response);
       }
@@ -68,10 +78,10 @@ const ProductPage = ({ setShowLoading }) => {
               onClick={() => {
                 navigate(`/payment/${id}`);
               }}
-              className={data.buyer ? "disabled" : ""}
-              disabled={data.buyer}
+              className={disableButton ? "disabled" : ""}
+              disabled={disableButton}
             >
-              {data.buyer ? "Cet article n'est plus à vendre" : "Acheter"}
+              {buttonText}
             </button>
           </div>
         </div>

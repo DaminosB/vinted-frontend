@@ -58,7 +58,9 @@ function App() {
         />
         <Route
           path="/offer/:id"
-          element={<ProductPage setShowLoading={setShowLoading} />}
+          element={
+            <ProductPage setShowLoading={setShowLoading} token={token} />
+          }
         />
         <Route
           path="/offer/publish"
