@@ -1,19 +1,27 @@
+import { useState } from "react";
 import { Range, getTrackBackground } from "react-range";
 
 const SliderComponent = ({ priceValues, setPriceValues }) => {
+  const [values, setValues] = useState([0, 50]);
+
   const handleChange = (values) => {
     const newArray = [...values];
-    setPriceValues(newArray);
+    setValues(newArray);
+  };
+
+  const handleFinalChange = () => {
+    setPriceValues(values);
   };
 
   return (
     <div>
       <Range
-        values={priceValues}
+        values={values}
         step={1}
         min={0}
         max={250}
         onChange={handleChange}
+        onFinalChange={handleFinalChange}
         renderTrack={({ props, children }) => {
           return (
             <div
@@ -34,7 +42,7 @@ const SliderComponent = ({ priceValues, setPriceValues }) => {
                   width: "100%",
                   borderRadius: "4px",
                   background: getTrackBackground({
-                    values: priceValues,
+                    values: values,
                     colors: ["#F5F6F7", "#2FB0BA", "#F5F6F7"],
                     min: 0,
                     max: 250,
