@@ -11,7 +11,12 @@ const stripePromise = loadStripe(
   "pk_test_51NZDpeLxQ617V9n8A5Td5QLWaEQxPrCaP3Zr28XuCB268SkdV813a8PEXhT73rDKbummxdgcCazhMQ2raLYnsBt000NdgirPpi"
 );
 
-const PaymentPage = ({ token, setShowSigninModal, setCanDisable }) => {
+const PaymentPage = ({
+  token,
+  setShowSigninModal,
+  setCanDisable,
+  setShowLoading,
+}) => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
@@ -28,12 +33,14 @@ const PaymentPage = ({ token, setShowSigninModal, setCanDisable }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setShowLoading(true);
         const response = await axios.get(
           `https://site--backend-vinted--kc7q9tc45mqv.code.run/offer/${id}`
         );
         // console.log(response.data);
         setData(response.data);
         setIsLoading(false);
+        setShowLoading(false);
       } catch (error) {
         console.log(error.response);
       }
@@ -47,7 +54,7 @@ const PaymentPage = ({ token, setShowSigninModal, setCanDisable }) => {
   }, [token, setShowSigninModal]);
 
   return isLoading ? (
-    <Loading />
+    <></>
   ) : (
     token && (
       <div className="container">

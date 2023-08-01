@@ -11,11 +11,14 @@ import Signin from "./components/Signin/Signin";
 import PublishPage from "./pages/PublishPage/PublishPage";
 import PaymentPage from "./pages/PaymentPage/PaymentPage";
 import ActivityPage from "./pages/ActivityPage/ActivityPage";
+import Loading from "./components/Loading/Loading";
 
 function App() {
   const [showSignupModal, setShowSignupModal] = useState(false);
   const [showSigninModal, setShowSigninModal] = useState(false);
   const [canDisable, setCanDisable] = useState(true);
+
+  const [showLoading, setShowLoading] = useState(false);
 
   const [token, setToken] = useState(Cookies.get("token"));
 
@@ -24,25 +27,9 @@ function App() {
   const [searchPriceMin, setSearchPriceMin] = useState(0);
   const [searchPriceMax, setSearchPriceMax] = useState(100);
 
-  const [data, setData] = useState({});
-  const [isLoading, setIsLoading] = useState(true);
-
   useEffect(() => {
     token && Cookies.set("token", token);
   }, [token]);
-
-  const fetchData = async (id) => {
-    try {
-      const response = await axios.get(
-        `https://site--backend-vinted--kc7q9tc45mqv.code.run/offer/${id}`
-      );
-      // console.log(response.data);
-      setData(response.data);
-      setIsLoading(false);
-    } catch (error) {
-      console.log(error.response);
-    }
-  };
 
   return (
     <Router>
@@ -73,18 +60,13 @@ function App() {
               setSearchPriceMin={setSearchPriceMin}
               searchPriceMax={searchPriceMax}
               setSearchPriceMax={setSearchPriceMax}
+              setShowLoading={setShowLoading}
             />
           }
         />
         <Route
           path="/offer/:id"
-          element={
-            <ProductPage
-              fetchData={fetchData}
-              isLoading={isLoading}
-              data={data}
-            />
-          }
+          element={<ProductPage setShowLoading={setShowLoading} />}
         />
         <Route
           path="/offer/publish"
@@ -101,11 +83,9 @@ function App() {
           element={
             <PaymentPage
               token={token}
-              fetchData={fetchData}
               setShowSigninModal={setShowSigninModal}
-              isLoading={isLoading}
-              data={data}
               setCanDisable={setCanDisable}
+              setShowLoading={setShowLoading}
             />
           }
         />
@@ -116,6 +96,7 @@ function App() {
               token={token}
               setShowSigninModal={setShowSigninModal}
               setCanDisable={setCanDisable}
+              setShowLoading={setShowLoading}
             />
           }
         />
@@ -138,6 +119,7 @@ function App() {
         canDisable={canDisable}
         setCanDisable={setCanDisable}
       />
+      <Loading showLoading={showLoading} />
     </Router>
   );
 }

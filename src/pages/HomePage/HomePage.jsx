@@ -16,6 +16,7 @@ const HomePage = ({
   setSearchPriceMin,
   searchPriceMax,
   setSearchPriceMax,
+  setShowLoading,
 }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
@@ -25,12 +26,12 @@ const HomePage = ({
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setShowLoading(true);
         const response = await axios.get(
           `https://site--backend-vinted--kc7q9tc45mqv.code.run/offers?title=${searchBar}&priceMin=${searchPriceMin}&priceMax=${searchPriceMax}&page=${pageToDisplay}`
         );
         // console.log(response.data);
         setData(response.data);
-        setIsLoading(false);
 
         const arrayOfPages = [];
         const numberOfPages = Math.floor(response.data.count / 10) + 1;
@@ -38,6 +39,8 @@ const HomePage = ({
           arrayOfPages.push(i);
         }
         setResultPages(arrayOfPages);
+        setIsLoading(false);
+        setShowLoading(false);
       } catch (error) {
         console.log(error.response);
       }

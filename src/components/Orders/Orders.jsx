@@ -4,18 +4,20 @@ import axios from "axios";
 import "./Orders.css";
 import Loading from "../Loading/Loading";
 
-const Orders = ({ token }) => {
+const Orders = ({ token, setShowLoading }) => {
   const [orders, setOrders] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     try {
       const fetchData = async () => {
+        setShowLoading(true);
         const response = await axios.get(
           `https://site--backend-vinted--kc7q9tc45mqv.code.run/user/orders?token=${token}`
         );
         setOrders(response.data);
         setIsLoading(false);
+        setShowLoading(false);
       };
       fetchData();
     } catch (error) {
@@ -24,7 +26,7 @@ const Orders = ({ token }) => {
   }, []);
 
   return isLoading ? (
-    <Loading />
+    <></>
   ) : orders.length === 0 ? (
     <p>
       <Link to="/">

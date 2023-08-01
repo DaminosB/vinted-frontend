@@ -5,7 +5,7 @@ import Carousel from "../../components/Carousel/Carousel";
 import axios from "axios";
 import Loading from "../../components/Loading/Loading";
 
-const ProductPage = () => {
+const ProductPage = ({ setShowLoading }) => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
@@ -16,12 +16,14 @@ const ProductPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setShowLoading(true);
         const response = await axios.get(
           `https://site--backend-vinted--kc7q9tc45mqv.code.run/offer/${id}`
         );
         // console.log(response.data);
         setData(response.data);
         setIsLoading(false);
+        setShowLoading(false);
       } catch (error) {
         console.log(error.response);
       }
@@ -30,7 +32,7 @@ const ProductPage = () => {
   }, []);
 
   return isLoading ? (
-    <Loading />
+    <></>
   ) : (
     <main>
       <div className="container">

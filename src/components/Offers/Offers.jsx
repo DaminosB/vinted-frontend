@@ -4,7 +4,7 @@ import axios from "axios";
 import "./Offers.css";
 import Loading from "../Loading/Loading";
 
-const Offers = ({ token }) => {
+const Offers = ({ token, setShowLoading }) => {
   const [offers, setOffers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -13,11 +13,13 @@ const Offers = ({ token }) => {
   useEffect(() => {
     try {
       const fetchData = async () => {
+        setShowLoading(true);
         const response = await axios.get(
           `https://site--backend-vinted--kc7q9tc45mqv.code.run/user/offers?token=${token}`
         );
         setOffers(response.data);
         setIsLoading(false);
+        setShowLoading(false);
       };
       fetchData();
     } catch (error) {
@@ -26,7 +28,7 @@ const Offers = ({ token }) => {
   }, []);
 
   return isLoading ? (
-    <Loading />
+    <></>
   ) : offers.length === 0 ? (
     <p>
       <Link to="/offer/publish">
