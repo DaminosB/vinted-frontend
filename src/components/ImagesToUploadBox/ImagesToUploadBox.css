@@ -11,11 +11,6 @@
   padding: 15px;
 }
 
-.uploaded-images input[type="file"] {
-  /* Apparence */
-  display: none;
-}
-
 .upload-thumbnail {
   /* Position */
   position: relative;

@@ -1,0 +1,36 @@
+.avatar {
+  /* Dimensions */
+  width: 100px;
+  height: 100px;
+
+  /* Marges */
+  margin-top: 35px;
+
+  /* Miscellaneous */
+  cursor: pointer;
+}
+
+.avatar img {
+  /* Dimensions */
+  width: 100%;
+  object-fit: cover;
+}
+
+.avatar .default-avatar {
+  /* Dimensions */
+  height: 100%;
+  width: 100%;
+
+  /* Background */
+  background-color: #99999930;
+
+  /* Flexbox */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Font */
+  font-family: "Courier New", Courier, monospace;
+  font-size: 72px;
+  color: white;
+}

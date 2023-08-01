@@ -15,6 +15,8 @@ const Signup = ({
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [avatar, setAvatar] = useState({});
+  const [previewAvatar, setPreviewAvatar] = useState(null);
   const [newsletter, setNewsletter] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -42,9 +44,20 @@ const Signup = ({
       setErrorMessage("Veuillez renseigner ce champ");
     } else {
       try {
+        const formData = new FormData();
+        formData.append("username", username);
+        formData.append("email", email);
+        formData.append("password", password);
+        formData.append("avatar", avatar);
+        formData.append("newsletter", newsletter);
         const response = await axios.post(
-          "https://site--backend-vinted--kc7q9tc45mqv.code.run/user/signup",
-          { username, email, password, newsletter }
+          "http://localhost:3000/user/signup",
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
         );
         //   console.log(response.data.token);
         setToken(response.data.token);
@@ -134,6 +147,25 @@ const Signup = ({
           {errorMessage && !password && (
             <p className="error-message">{errorMessage}</p>
           )}
+          <label htmlFor="avatar">
+            <input
+              type="file"
+              name="avatar"
+              id="avatar"
+              onChange={(event) => {
+                setAvatar(event.target.files[0]);
+                setPreviewAvatar(URL.createObjectURL(event.target.files[0]));
+              }}
+            />
+            <div className="avatar">
+              <span>Votre avatar</span>
+              {previewAvatar ? (
+                <img src={previewAvatar} alt="Votre avatar" />
+              ) : (
+                <div className="default-avatar">+</div>
+              )}
+            </div>
+          </label>
           <label htmlFor="newsletter">
             <input
               type="checkbox"
