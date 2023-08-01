@@ -20,10 +20,8 @@ const ProductPage = ({ setShowLoading, token }) => {
       try {
         setShowLoading(true);
         const response = await axios.get(
-          // `https://site--backend-vinted--kc7q9tc45mqv.code.run/offer/${id}`
-          `http://localhost:3000/offer/${id}`
+          `https://site--backend-vinted--kc7q9tc45mqv.code.run/offer/${id}`
         );
-        // console.log(response.data);
         setData(response.data);
         setIsLoading(false);
         setShowLoading(false);
