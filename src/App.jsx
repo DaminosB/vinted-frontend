@@ -10,11 +10,12 @@ import Signup from "./components/Sign-up/Signup";
 import Signin from "./components/Signin/Signin";
 import PublishPage from "./pages/PublishPage/PublishPage";
 import PaymentPage from "./pages/PaymentPage/PaymentPage";
-import OrdersPage from "./pages/ActivityPage/ActivityPage";
+import ActivityPage from "./pages/ActivityPage/ActivityPage";
 
 function App() {
   const [showSignupModal, setShowSignupModal] = useState(false);
   const [showSigninModal, setShowSigninModal] = useState(false);
+  const [canDisable, setCanDisable] = useState(true);
 
   const [token, setToken] = useState(Cookies.get("token"));
 
@@ -91,6 +92,7 @@ function App() {
             <PublishPage
               token={token}
               setShowSigninModal={setShowSigninModal}
+              setCanDisable={setCanDisable}
             />
           }
         />
@@ -103,13 +105,18 @@ function App() {
               setShowSigninModal={setShowSigninModal}
               isLoading={isLoading}
               data={data}
+              setCanDisable={setCanDisable}
             />
           }
         />
         <Route
           path="/user/orders"
           element={
-            <OrdersPage token={token} setShowSigninModal={setShowSigninModal} />
+            <ActivityPage
+              token={token}
+              setShowSigninModal={setShowSigninModal}
+              setCanDisable={setCanDisable}
+            />
           }
         />
       </Routes>
@@ -119,6 +126,8 @@ function App() {
         token={token}
         setToken={setToken}
         setShowSigninModal={setShowSigninModal}
+        canDisable={canDisable}
+        setCanDisable={setCanDisable}
       />
       <Signin
         showSigninModal={showSigninModal}
@@ -126,6 +135,8 @@ function App() {
         token={token}
         setToken={setToken}
         setShowSignupModal={setShowSignupModal}
+        canDisable={canDisable}
+        setCanDisable={setCanDisable}
       />
     </Router>
   );

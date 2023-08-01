@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./Signin.css";
 import axios from "axios";
 
@@ -8,13 +9,28 @@ const Signin = ({
   token,
   setToken,
   setShowSignupModal,
+  canDisable,
+  setCanDisable,
 }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (
+      location.pathname !== "/payment/*" &&
+      location.pathname !== "/offer/publish" &&
+      location.pathname !== "/user/orders"
+    ) {
+      setCanDisable(true);
+    }
+  }, [location, showSigninModal]);
+
   window.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
+    if (event.key === "Escape" && canDisable) {
       setShowSigninModal(false);
     }
   });
@@ -38,7 +54,7 @@ const Signin = ({
       <div
         className="modal-wrapper"
         onClick={() => {
-          setShowSigninModal(false);
+          canDisable && setShowSigninModal(false);
         }}
       >
         <form
@@ -46,16 +62,18 @@ const Signin = ({
             event.stopPropagation();
           }}
         >
-          <button
-            type="button"
-            className="close-button"
-            onClick={() => {
-              setErrorMessage("");
-              setShowSigninModal(false);
-            }}
-          >
-            x
-          </button>
+          {canDisable && (
+            <button
+              type="button"
+              className="close-button"
+              onClick={() => {
+                setErrorMessage("");
+                setShowSigninModal(false);
+              }}
+            >
+              x
+            </button>
+          )}
           <h1>Se connecter</h1>
           <label htmlFor="email">
             <input
@@ -93,6 +111,17 @@ const Signin = ({
           >
             Vous n'avez pas encore de compte&nbsp;? Rdv sur la page inscription.
           </p>
+          {!canDisable && (
+            <p
+              className="text-action"
+              onClick={() => {
+                setShowSigninModal(false);
+                navigate("/");
+              }}
+            >
+              Pour revenir à l'accueil, c'est par ici&nbsp;!
+            </p>
+          )}
           <button
             type="submit"
             onClick={(event) => {

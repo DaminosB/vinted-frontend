@@ -10,7 +10,7 @@ const stripePromise = loadStripe(
   "pk_test_51NZDpeLxQ617V9n8A5Td5QLWaEQxPrCaP3Zr28XuCB268SkdV813a8PEXhT73rDKbummxdgcCazhMQ2raLYnsBt000NdgirPpi"
 );
 
-const PaymentPage = ({ token, setShowSigninModal }) => {
+const PaymentPage = ({ token, setShowSigninModal, setCanDisable }) => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
@@ -38,10 +38,12 @@ const PaymentPage = ({ token, setShowSigninModal }) => {
       }
     };
     fetchData();
+
     if (!token) {
+      setCanDisable(false);
       setShowSigninModal(true);
     }
-  }, [token]);
+  }, [token, setShowSigninModal]);
 
   return isLoading ? (
     <p>Chargement</p>

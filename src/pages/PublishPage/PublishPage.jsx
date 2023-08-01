@@ -4,7 +4,7 @@ import "./PublishPage.css";
 import axios from "axios";
 import ImagesToUploadBox from "../../components/ImagesToUploadBox/ImagesToUploadBox";
 
-const PublishPage = ({ token, setShowSigninModal }) => {
+const PublishPage = ({ token, setShowSigninModal, setCanDisable }) => {
   const [pictures, setPictures] = useState([]);
   const [previewPictures, setPreviewPictures] = useState([]);
   const [title, setTitle] = useState("");
@@ -24,6 +24,7 @@ const PublishPage = ({ token, setShowSigninModal }) => {
 
   useEffect(() => {
     if (!token) {
+      setCanDisable(false);
       setShowSigninModal(true);
     }
   }, [token, setShowSigninModal]);

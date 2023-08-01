@@ -28,12 +28,6 @@ const ProductPage = () => {
     fetchData();
   }, []);
 
-  //   console.log(data);
-
-  //   const { product_image } = data;
-
-  console.log(data);
-
   return isLoading ? (
     <span>En cours de chargement...</span>
   ) : (

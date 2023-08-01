@@ -112,7 +112,7 @@ const Header = ({
             </button>
             <button
               onClick={() => {
-                navigate("/user/orders/");
+                navigate("/user/orders");
               }}
             >
               Mon activité

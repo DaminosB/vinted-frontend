@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./Signup.css";
 import axios from "axios";
 
@@ -8,6 +9,8 @@ const Signup = ({
   token,
   setToken,
   setShowSigninModal,
+  canDisable,
+  setCanDisable,
 }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -15,8 +18,21 @@ const Signup = ({
   const [newsletter, setNewsletter] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (
+      location.pathname !== "/payment/*" &&
+      location.pathname !== "/offer/publish" &&
+      location.pathname !== "/user/orders"
+    ) {
+      setCanDisable(true);
+    }
+  }, [location, showSignupModal]);
+
   window.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
+    if (event.key === "Escape" && canDisable) {
       setShowSignupModal(false);
     }
   });
@@ -49,7 +65,7 @@ const Signup = ({
       <div
         className="modal-wrapper"
         onClick={() => {
-          setShowSignupModal(false);
+          canDisable && setShowSignupModal(false);
         }}
       >
         <form
@@ -58,16 +74,18 @@ const Signup = ({
           }}
         >
           <h1>S'inscrire</h1>
-          <button
-            type="button"
-            className="close-button"
-            onClick={() => {
-              setErrorMessage("");
-              setShowSignupModal(false);
-            }}
-          >
-            x
-          </button>
+          {canDisable && (
+            <button
+              type="button"
+              className="close-button"
+              onClick={() => {
+                setErrorMessage("");
+                setShowSignupModal(false);
+              }}
+            >
+              x
+            </button>
+          )}
           <label htmlFor="username">
             <input
               type="text"
@@ -143,6 +161,17 @@ const Signup = ({
           >
             Vous avez déjà un compte&nbsp;? Rdv sur la page connexion.
           </p>
+          {!canDisable && (
+            <p
+              className="text-action"
+              onClick={() => {
+                setShowSignupModal(false);
+                navigate("/");
+              }}
+            >
+              Pour revenir à l'accueil, c'est par ici&nbsp;!
+            </p>
+          )}
           <button
             type="submit"
             onClick={(event) => {

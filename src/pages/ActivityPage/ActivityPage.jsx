@@ -3,15 +3,16 @@ import "./ActivityPage.css";
 import Orders from "../../components/Orders/Orders";
 import Offers from "../../components/Offers/Offers";
 
-const OrdersPage = ({ token, setShowSigninModal }) => {
+const OrdersPage = ({ token, setShowSigninModal, setCanDisable }) => {
   const [showOrdersComp, setShowOrdersComp] = useState(true);
   const [showOffersComp, setShowOffersComp] = useState(false);
 
   useEffect(() => {
     if (!token) {
+      setCanDisable(false);
       setShowSigninModal(true);
     }
-  }, [token]);
+  }, [token, setShowSigninModal]);
 
   return (
     token && (
