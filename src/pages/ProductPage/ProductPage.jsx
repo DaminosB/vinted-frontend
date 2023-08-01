@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import "./ProductPage.css";
 import Carousel from "../../components/Carousel/Carousel";
 import axios from "axios";
+import Loading from "../../components/Loading/Loading";
 
 const ProductPage = () => {
   const [data, setData] = useState({});
@@ -29,7 +30,7 @@ const ProductPage = () => {
   }, []);
 
   return isLoading ? (
-    <span>En cours de chargement...</span>
+    <Loading />
   ) : (
     <main>
       <div className="container">

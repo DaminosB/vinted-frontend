@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./Orders.css";
+import Loading from "../Loading/Loading";
 
 const Orders = ({ token }) => {
   const [orders, setOrders] = useState([]);
@@ -23,7 +24,7 @@ const Orders = ({ token }) => {
   }, []);
 
   return isLoading ? (
-    <p>Chargement</p>
+    <Loading />
   ) : orders.length === 0 ? (
     <p>
       <Link to="/">

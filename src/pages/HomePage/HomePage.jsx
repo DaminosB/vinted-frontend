@@ -5,6 +5,7 @@ import axios from "axios";
 import Thumbnail from "../../components/Thumbnail/Thumbnail";
 import heroImg from "../../assets/img/hero.jpeg";
 import tearingEffect from "../../assets/img/tear.svg";
+import Loading from "../../components/Loading/Loading";
 
 const HomePage = ({
   searchBar,
@@ -46,7 +47,7 @@ const HomePage = ({
   }, [searchBar, searchPriceMax, searchPriceMin, pageToDisplay]);
 
   return isLoading ? (
-    <span>En cours de chargement...</span>
+    <Loading />
   ) : (
     <main className="home-page">
       <div className="hero">

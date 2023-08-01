@@ -16,6 +16,8 @@ const Signin = ({
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -37,12 +39,14 @@ const Signin = ({
 
   const handleSubmitSignin = async () => {
     try {
+      setIsLoading(true);
       const response = await axios.post(
         "https://site--backend-vinted--kc7q9tc45mqv.code.run/user/login",
         { email, password }
       );
       setToken(response.data.token);
       setShowSigninModal(false);
+      setIsLoading(false);
     } catch (error) {
       console.log(error.response);
       setErrorMessage("Email ou mot de passe invalide");
@@ -124,12 +128,14 @@ const Signin = ({
           )}
           <button
             type="submit"
+            className={isLoading ? "disabled" : ""}
             onClick={(event) => {
               event.preventDefault();
               handleSubmitSignin();
             }}
+            disabled={isLoading}
           >
-            Se connecter
+            {isLoading ? "Veuillez patienter" : "Se connecter"}
           </button>
         </form>
       </div>

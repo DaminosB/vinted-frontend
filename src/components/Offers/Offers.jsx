@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import "./Offers.css";
+import Loading from "../Loading/Loading";
 
 const Offers = ({ token }) => {
   const [offers, setOffers] = useState([]);
@@ -25,7 +26,7 @@ const Offers = ({ token }) => {
   }, []);
 
   return isLoading ? (
-    <p>Chargement</p>
+    <Loading />
   ) : offers.length === 0 ? (
     <p>
       <Link to="/offer/publish">

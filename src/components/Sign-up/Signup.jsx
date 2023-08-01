@@ -20,6 +20,8 @@ const Signup = ({
   const [newsletter, setNewsletter] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -44,6 +46,7 @@ const Signup = ({
       setErrorMessage("Veuillez renseigner ce champ");
     } else {
       try {
+        setIsLoading(true);
         const formData = new FormData();
         formData.append("username", username);
         formData.append("email", email);
@@ -66,6 +69,8 @@ const Signup = ({
         setPassword("");
         setNewsletter(false);
         setShowSignupModal(false);
+        setPreviewAvatar(null);
+        setIsLoading(false);
       } catch (error) {
         console.log(error.response);
       }
@@ -206,10 +211,12 @@ const Signup = ({
           )}
           <button
             type="submit"
+            className={isLoading ? "disabled" : ""}
             onClick={(event) => {
               event.preventDefault();
               handleSubmitSignup();
             }}
+            disabled={isLoading}
           >
             S'inscrire
           </button>

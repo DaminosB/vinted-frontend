@@ -1,0 +1,24 @@
+.modal-wrapper > .loading-box {
+  /* Dimensions */
+  width: 250px;
+  height: 100px;
+
+  /* Flexbox */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  /* Marges */
+  padding: 25px;
+
+  /* Background */
+  background-color: white;
+
+  /* Font */
+  color: #999999;
+}
+
+.modal-wrapper > .loading-box > img {
+  /* Dimensions */
+  height: 75px;
+}

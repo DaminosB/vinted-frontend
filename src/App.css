@@ -17,6 +17,10 @@ button {
   cursor: pointer;
 }
 
+form button[type="submit"].disabled {
+  background-color: #2fb1ba4e;
+}
+
 h1 {
   /* Font */
   font-size: 24px;
@@ -164,7 +168,7 @@ input[type="file"] {
   font-size: 12px;
 }
 
-.modal-wrapper > form > button[type="submit"] {
+.modal-wrapper button[type="submit"] {
   /* Font */
   color: white;
 

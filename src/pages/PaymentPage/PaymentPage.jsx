@@ -5,6 +5,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import "./PaymentPage.css";
 import CheckoutForm from "../../components/CheckoutForm/CheckoutForm";
 import axios from "axios";
+import Loading from "../../components/Loading/Loading";
 
 const stripePromise = loadStripe(
   "pk_test_51NZDpeLxQ617V9n8A5Td5QLWaEQxPrCaP3Zr28XuCB268SkdV813a8PEXhT73rDKbummxdgcCazhMQ2raLYnsBt000NdgirPpi"
@@ -46,7 +47,7 @@ const PaymentPage = ({ token, setShowSigninModal, setCanDisable }) => {
   }, [token, setShowSigninModal]);
 
   return isLoading ? (
-    <p>Chargement</p>
+    <Loading />
   ) : (
     token && (
       <div className="container">
