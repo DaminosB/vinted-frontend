@@ -202,6 +202,9 @@ input[type="file"] {
 .modal-wrapper input[type="checkbox"] {
   /* Marges */
   margin-right: 25px;
+
+  /* Marges */
+  margin-bottom: 15px;
 }
 
 /* ------------------------------------------------ */

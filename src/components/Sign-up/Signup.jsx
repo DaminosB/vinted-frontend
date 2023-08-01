@@ -19,6 +19,7 @@ const Signup = ({
   const [previewAvatar, setPreviewAvatar] = useState(null);
   const [newsletter, setNewsletter] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [globalErrorMessage, setGlobalErrorMessage] = useState("");
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -73,11 +74,12 @@ const Signup = ({
         setIsLoading(false);
       } catch (error) {
         console.log(error.response);
+        setGlobalErrorMessage(error.response.data.message);
+        setIsLoading(false);
       }
     }
   };
 
-  // console.log(newsletter);
   if (showSignupModal) {
     return (
       <div
@@ -184,6 +186,9 @@ const Signup = ({
             />
             <span>S'inscrire à la newsletter</span>
           </label>
+          {globalErrorMessage && (
+            <p className="error-message">{globalErrorMessage}</p>
+          )}
           <p className="legal-notice">
             En m'inscrivant je confirme avoir lu et accepté les Termes &
             Conditions et Politique de Confidentialité de Vinted. Je confirme

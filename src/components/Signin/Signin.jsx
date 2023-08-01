@@ -50,6 +50,7 @@ const Signin = ({
     } catch (error) {
       console.log(error.response);
       setErrorMessage("Email ou mot de passe invalide");
+      setIsLoading(false);
     }
   };
 
