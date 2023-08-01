@@ -68,8 +68,10 @@ const ProductPage = ({ setShowLoading }) => {
               onClick={() => {
                 navigate(`/payment/${id}`);
               }}
+              className={data.buyer ? "disabled" : ""}
+              disabled={data.buyer}
             >
-              Acheter
+              {data.buyer ? "Cet article n'est plus à vendre" : "Acheter"}
             </button>
           </div>
         </div>

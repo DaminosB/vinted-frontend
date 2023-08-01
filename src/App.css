@@ -17,8 +17,10 @@ button {
   cursor: pointer;
 }
 
-form button[type="submit"].disabled {
+form button[type="submit"].disabled,
+.content-box button.disabled {
   background-color: #2fb1ba4e;
+  cursor: auto;
 }
 
 h1 {
