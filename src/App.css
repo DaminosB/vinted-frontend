@@ -90,8 +90,9 @@ input[type="file"] {
 
 .modal-wrapper {
   /* Position */
-  position: absolute;
+  position: fixed;
   top: 0px;
+  overflow: scroll;
 
   /* Dimensions */
   width: 100vw;
