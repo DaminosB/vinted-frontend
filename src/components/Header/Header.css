@@ -80,6 +80,7 @@ header .filters {
 
   /* Flexbox */
   display: flex;
+  justify-content: space-between;
 }
 
 header .filters input.active {

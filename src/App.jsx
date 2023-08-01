@@ -26,6 +26,7 @@ function App() {
   const [priceFilter, setPriceFilter] = useState(true);
   const [searchPriceMin, setSearchPriceMin] = useState(0);
   const [searchPriceMax, setSearchPriceMax] = useState(100);
+  const [priceValues, setPriceValues] = useState([0, 50]);
 
   useEffect(() => {
     token && Cookies.set("token", token);
@@ -38,12 +39,8 @@ function App() {
         setShowSigninModal={setShowSigninModal}
         searchBar={searchBar}
         setSearchBar={setSearchBar}
-        priceFilter={priceFilter}
-        setPriceFilter={setPriceFilter}
-        searchPriceMin={searchPriceMin}
-        setSearchPriceMin={setSearchPriceMin}
-        searchPriceMax={searchPriceMax}
-        setSearchPriceMax={setSearchPriceMax}
+        priceValues={priceValues}
+        setPriceValues={setPriceValues}
         token={token}
         setToken={setToken}
       />
@@ -53,14 +50,9 @@ function App() {
           element={
             <HomePage
               searchBar={searchBar}
-              setSearchBar={setSearchBar}
-              priceFilter={priceFilter}
-              setPriceFilter={setPriceFilter}
-              searchPriceMin={searchPriceMin}
-              setSearchPriceMin={setSearchPriceMin}
-              searchPriceMax={searchPriceMax}
-              setSearchPriceMax={setSearchPriceMax}
               setShowLoading={setShowLoading}
+              priceValues={priceValues}
+              setPriceValues={setPriceValues}
             />
           }
         />

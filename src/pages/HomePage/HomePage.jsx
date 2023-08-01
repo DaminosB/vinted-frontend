@@ -7,28 +7,21 @@ import heroImg from "../../assets/img/hero.jpeg";
 import tearingEffect from "../../assets/img/tear.svg";
 import Loading from "../../components/Loading/Loading";
 
-const HomePage = ({
-  searchBar,
-  setSearchBar,
-  priceFilter,
-  setPriceFilter,
-  searchPriceMin,
-  setSearchPriceMin,
-  searchPriceMax,
-  setSearchPriceMax,
-  setShowLoading,
-}) => {
+const HomePage = ({ searchBar, setShowLoading, priceValues }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [resultPages, setResultPages] = useState([]);
   const [pageToDisplay, setPageToDisplay] = useState(1);
+
+  const priceMin = priceValues[0];
+  const priceMax = priceValues[1];
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         setShowLoading(true);
         const response = await axios.get(
-          `https://site--backend-vinted--kc7q9tc45mqv.code.run/offers?title=${searchBar}&priceMin=${searchPriceMin}&priceMax=${searchPriceMax}&page=${pageToDisplay}`
+          `https://site--backend-vinted--kc7q9tc45mqv.code.run/offers?title=${searchBar}&priceMin=${priceMin}&priceMax=${priceMax}&page=${pageToDisplay}`
         );
         // console.log(response.data);
         setData(response.data);
@@ -46,7 +39,7 @@ const HomePage = ({
       }
     };
     fetchData();
-  }, [searchBar, searchPriceMax, searchPriceMin, pageToDisplay]);
+  }, [searchBar, priceMax, priceMin, pageToDisplay]);
 
   return isLoading ? (
     <Loading />
@@ -84,21 +77,9 @@ const HomePage = ({
           })}
         </div>
         <div className="results-box">
-          {priceFilter
-            ? data.offers
-                .sort((a, b) => {
-                  return a.product_price - b.product_price;
-                })
-                .map((product, index) => {
-                  return <Thumbnail key={product._id} product={product} />;
-                })
-            : data.offers
-                .sort((a, b) => {
-                  return a.product_name.localeCompare(b.product_name);
-                })
-                .map((product, index) => {
-                  return <Thumbnail key={product._id} product={product} />;
-                })}
+          {data.offers.map((product, index) => {
+            return <Thumbnail key={product._id} product={product} />;
+          })}
         </div>
         <div className="pages-array">
           {resultPages.map((page, index) => {

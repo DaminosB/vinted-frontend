@@ -3,20 +3,17 @@ import { useNavigate, useLocation } from "react-router-dom";
 import Cookies from "js-cookie";
 import "./Header.css";
 import logo from "../../assets/img/logo.png";
+import SliderComponent from "../SliderComponent/SliderComponent";
 
 const Header = ({
   setShowSignupModal,
   setShowSigninModal,
   searchBar,
   setSearchBar,
-  priceFilter,
-  setPriceFilter,
-  searchPriceMin,
-  setSearchPriceMin,
-  searchPriceMax,
-  setSearchPriceMax,
   token,
   setToken,
+  priceValues,
+  setPriceValues,
 }) => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -39,48 +36,12 @@ const Header = ({
               }}
             />
           </label>
-          {/* {location.pathname === "/" && (
-            <div className="filters">
-              <label htmlFor="price-filter">
-                <span>Trier par prix&nbsp;:</span>
-                <input
-                  type="button"
-                  value={priceFilter ? "On" : "Off"}
-                  onClick={() => {
-                    setPriceFilter(!priceFilter);
-                  }}
-                  className={priceFilter ? "active" : "inactive"}
-                />
-              </label>
-              <span>Prix entre&nbsp;:</span>
-              <label htmlFor="price-min">
-                <input
-                  type="number"
-                  name="price-min"
-                  id="price-min"
-                  value={searchPriceMin}
-                  min="0"
-                  onChange={(event) => {
-                    event.target.value
-                      ? setSearchPriceMin(parseInt(event.target.value))
-                      : setSearchPriceMin(parseInt(0));
-                  }}
-                />
-              </label>
-              <label htmlFor="price-max">
-                <input
-                  type="number"
-                  name="price-max"
-                  id="price-max"
-                  value={searchPriceMax}
-                  min={searchPriceMin + 1}
-                  onChange={(event) => {
-                    setSearchPriceMax(parseInt(event.target.value));
-                  }}
-                />
-              </label>
-            </div>
-          )} */}
+          {location.pathname === "/" && (
+            <SliderComponent
+              priceValues={priceValues}
+              setPriceValues={setPriceValues}
+            />
+          )}
         </form>
         {!token ? (
           <div className="connexion-buttons">
